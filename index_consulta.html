@@ -63,11 +63,11 @@
                                 <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome"
                                     required>
                             </div>
-
-                            <div class="input-dados">
-                                <label for="idade">Idade:</label>
-                                <input id="idade" type="number" name="idade" placeholder="Digite sua idade" min="0">
-                            </div>
+                        </div>
+                        
+                        <div class="input-dados2">
+                            <label for="idade">Idade:</label>
+                            <input id="idade" type="number" name="idade" placeholder="Digite sua idade" min="0">
                         </div>
 
                         <div class="input-endereço">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
 
-                        <div class="input-dados">
+                        <div class="input-dados2">
                             <label for="complemento">Complemento:</label>
                             <input id="complemento" type="text" name="complemento">
                         </div>
@@ -165,10 +165,61 @@
                     </div>
                 </div>
             </div>
-            <button class="btn" id="consultar-btn">Consultar</button>
+            <button class="btn" id="consultar-btn" onclick="gerarJSON()">Consultar</button>
         </div>
     </section>
-    <!-- <script src="scripts/introduction.js"></script> -->
+    <script>
+        function gerarJSON() {
+            // Obtenha os valores dos campos
+            var nome = document.getElementById("firstname").value;
+            var sobrenome = document.getElementById("lastname").value;
+            var idade = document.getElementById("idade").value;
+            var endereco = document.getElementById("endereco").value;
+            var numero = document.getElementById("numero").value;
+            var cep = document.getElementById("cep").value;
+            var estado = document.getElementById("estado").value;
+            var cidade = document.getElementById("cidade").value;
+            var bairro = document.getElementById("bairro").value;
+
+            // Verifique se todos os campos obrigatórios estão preenchidos
+            if (nome && sobrenome && idade && endereco && numero && cep && estado && cidade && bairro) {
+                // Obtenha os valores dos campos opcionais
+                var complemento = document.getElementById("complemento").value;
+                var febre = document.querySelector('input[name="febre"]:checked') ? document.querySelector('input[name="febre"]:checked').value : "";
+                var dor_de_cabeca = document.querySelector('input[name="cabeca"]:checked') ? document.querySelector('input[name="cabeca"]:checked').value : "";
+                var dor_nas_articulacoes = document.querySelector('input[name="articulacoes"]:checked') ? document.querySelector('input[name="articulacoes"]:checked').value : "";
+                var sangramento = document.querySelector('input[name="sangramento"]:checked') ? document.querySelector('input[name="sangramento"]:checked').value : "";
+
+                // Crie o objeto de dados apenas com os campos preenchidos
+                var dadosConsulta = {
+                    "nome": nome,
+                    "sobrenome": sobrenome,
+                    "idade": idade,
+                    "endereco": endereco,
+                    "numero": numero,
+                    "complemento": complemento,
+                    "cep": cep,
+                    "estado": estado,
+                    "cidade": cidade,
+                    "bairro": bairro,
+                    "febre": febre,
+                    "dor_de_cabeca": dor_de_cabeca,
+                    "dor_nas_articulacoes": dor_nas_articulacoes,
+                    "sangramento": sangramento
+                };
+
+                // Converter objeto JavaScript em JSON
+                var jsonConsulta = JSON.stringify(dadosConsulta);
+                console.log(jsonConsulta);
+
+                // Aqui você pode enviar o JSON para sua API Flask via fetch() ou realizar qualquer outra ação necessária
+            } else {
+                // Se algum campo obrigatório não estiver preenchido, exibir um alerta
+                alert("Por favor, preencha todos os campos obrigatórios.");
+            }
+        }
+    </script>
 </body>
+
 
 </html>
