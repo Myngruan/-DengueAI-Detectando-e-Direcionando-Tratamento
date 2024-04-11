@@ -14,10 +14,14 @@ function gerarJSON() {
     if (nome && sobrenome && idade && endereco && numero && cep && estado && cidade && bairro) {
         // Obtenha os valores dos campos opcionais
         var complemento = document.getElementById("complemento").value;
-        var febre = document.querySelector('input[name="febre"]:checked') ? document.querySelector('input[name="febre"]:checked').value : "";
-        var dor_de_cabeca = document.querySelector('input[name="cabeca"]:checked') ? document.querySelector('input[name="cabeca"]:checked').value : "";
-        var dor_nas_articulacoes = document.querySelector('input[name="articulacoes"]:checked') ? document.querySelector('input[name="articulacoes"]:checked').value : "";
-        var sangramento = document.querySelector('input[name="sangramento"]:checked') ? document.querySelector('input[name="sangramento"]:checked').value : "";
+        var febreCheckbox = document.querySelector('input[name="febre"]:checked');
+        var febre = febreCheckbox ? febreCheckbox.value : "";
+        var cabecaCheckbox = document.querySelector('input[name="cabeca"]:checked');
+        var dor_de_cabeca = cabecaCheckbox ? cabecaCheckbox.value : "";
+        var articulacoesCheckbox = document.querySelector('input[name="articulacoes"]:checked');
+        var dor_nas_articulacoes = articulacoesCheckbox ? articulacoesCheckbox.value : "";
+        var sangramentoCheckbox = document.querySelector('input[name="sangramento"]:checked');
+        var sangramento = sangramentoCheckbox ? sangramentoCheckbox.value : "";
 
         // Crie o objeto de dados apenas com os campos preenchidos
         var dadosConsulta = {
@@ -53,6 +57,7 @@ function gerarJSON() {
             .then(data => {
                 console.log('Resposta do servidor:', data);
                 // Faça o que for necessário com a resposta do servidor
+                alert(JSON.stringify(data));
             })
             .catch(error => {
                 console.error('Erro ao enviar dados:', error);
@@ -70,10 +75,20 @@ function gerarJSON() {
         document.getElementById("estado").value = "";
         document.getElementById("cidade").value = "";
         document.getElementById("bairro").value = "";
-        document.querySelector('input[name="febre"]:checked').checked = false;
-        document.querySelector('input[name="cabeca"]:checked').checked = false;
-        document.querySelector('input[name="articulacoes"]:checked').checked = false;
-        document.querySelector('input[name="sangramento"]:checked').checked = false;
+        
+        // Desmarcar os botões de rádio selecionados, se houver
+        if (febreCheckbox) {
+            febreCheckbox.checked = false;
+        }
+        if (cabecaCheckbox) {
+            cabecaCheckbox.checked = false;
+        }
+        if (articulacoesCheckbox) {
+            articulacoesCheckbox.checked = false;
+        }
+        if (sangramentoCheckbox) {
+            sangramentoCheckbox.checked = false;
+        }
 
     } else {
         // Se algum campo obrigatório não estiver preenchido, exibir um alerta

@@ -3,7 +3,7 @@ import numpy as np
 from DecisionTree import DecisionTree
 
 class DenguePredictor:
-    def __init__(self, data_file='sintomas_dengue.csv', test_size=0.2, random_state=42, max_depth=10):
+    def __init__(self, data_file='E:/AtividadesUfs/IA-2022.2/-DengueAI-Detectando-e-Direcionando-Tratamento/-DengueAI-Detectando-e-Direcionando-Tratamento/sintomas_dengue.csv', test_size=0.2, random_state=42, max_depth=10):
         self.data_file = data_file
         self.test_size = test_size
         self.random_state = random_state
