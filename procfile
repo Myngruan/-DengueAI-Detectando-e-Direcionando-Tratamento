@@ -1,1 +1,2 @@
-web: gunicorn princiapl:app
+web: gunicorn principal:app
+worker: gunicorn utils:app
