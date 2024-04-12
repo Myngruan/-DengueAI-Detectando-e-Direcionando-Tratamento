@@ -1,1 +1,0 @@
-# -DengueAI-Detectando-e-Direcionando-Tratamento
