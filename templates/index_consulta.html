@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="styles/componentesReuso.css"> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-sob4YG0+HUZiPCssbtzr4+T1tXNVkd5vQ4C3TG8v4rV7W/1epvlG0YQTUCyE65PjKrhc5+dz5fSxgJ0IZaWp0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link rel="stylesheet" href="../pages/styles/consulta.css">
+    <link rel="stylesheet" href="../pages/styles/componentesReuso.css">
+    <style>
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+    <title>Tela de Consulta</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">D&D</a>
+
+        <nav class="navbar">
+            <div class="testWve">
+                <a href="/" id="limpar-link">Home</a>
+                <a href="/consulta" class="active">Consulta Online</a>
+                <a href="/painel" id="limpar-link">Painel Controle</a>
+                <a href="/hospitais" id="limpar-link">Hospitais</a>
+                <a href="/contaminacao" id="limpar-link">Contaminação</a>
+                <a href="/unidades" id="limpar-link">Novas unidades</a>
+            </div>
+        </nav>
+
+    </header>
+
+    <section class="consulta" id="consulta">
+        <div class="mach">
+            <h1>MACHINE LEARNING</h1>
+            <span class="traço"></span>
+        </div>
+
+        <h2>PREVISÃO DE DENGUE</h2>
+
+        <div class="consulta-content">
+            <div id="resultado"></div>
+            <form id="consulta-form">
+                <div class="dados-user">
+                    <div class="input-nome">
+                        <div class="input-dados">
+                            <label for="firstname">Primeiro nome:</label>
+                            <input id="firstname" type="text" name="firstname" placeholder="informe seu primeiro nome"
+                                required>
+                        </div>
+
+                        <div class="input-dados">
+                            <label for="lastname">Sobrenome:</label>
+                            <input id="lastname" type="text" name="lastname" placeholder="informe seu sobrenome"
+                                required>
+                        </div>
+
+                        <div class="input-dados">
+                            <label for="idade">Idade:</label>
+                            <input id="idade" type="number" name="idade" placeholder="informe sua idade" min="0">
+                        </div>
+
+
+                        <div class="input-dados">
+                            <label for="endereco">Endereço:</label>
+                            <input id="endereco" type="text" name="endereco" placeholder="informe seu Endereço"
+                                required>
+                        </div>
+
+                        <div class="input-dados">
+                            <label for="numero">Nº:</label>
+                            <input id="numero" type="number" name="numero" min="0">
+                        </div>
+
+
+                        <div class="input-dados">
+                            <label for="complemento">Complemento:</label>
+                            <input id="complemento" type="text" name="complemento">
+                        </div>
+
+                        <div class="input-dados">
+                            <label for="cep">CEP:</label>
+                            <input id="cep" type="text" name="cep" required placeholder="informe seu cep">
+                        </div>
+
+                        <div class="input-dados">
+                            <label for="estado">Estado:</label>
+                            <input id="estado" type="text" name="estado" required placeholder="informe seu estado">
+                        </div>
+
+
+                        <div class="input-dados">
+                            <label for="cidade">Cidade:</label>
+                            <input id="cidade" type="text" name="cidade" required placeholder="informe sua cidade">
+                        </div>
+
+                        <div class="input-dados">
+                            <label for="bairro">Bairro:</label>
+                            <input id="bairro" type="text" name="bairro" required placeholder="informe seu bairro">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sintomas">
+                    <h3>Preencha o formulário abaixo para fazer uma consulta <span class="traço" id="separador"></span>
+                    </h3>
+                    <label for="febre">Está com febre?</label>
+                    <div class="opcoes">
+                        <div>
+                            <input type="radio" id="sim" name="febre" value=1 required>
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="não" name="febre" value=0 required>
+                            <label for="não">Não</label>
+                        </div>
+                    </div>
+
+                    <label for="cabeca">Está com dor de cabeça?</label>
+                    <div class="opcoes">
+                        <div>
+                            <input type="radio" id="sim" name="cabeca" value=1 required>
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="não" name="cabeca" value=0 required>
+                            <label for="não">Não</label>
+                        </div>
+                    </div>
+
+                    <label for="articulacoes">Está sentindo alguma dor nas articulações?</label>
+                    <div class="opcoes">
+                        <div>
+                            <input type="radio" id="sim" name="articulacoes" value=1 required>
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="não" name="articulacoes" value=0 required>
+                            <label for="não">Não</label>
+                        </div>
+                    </div>
+
+                    <label for="sangramento">Está com algum tipo de sagramento?</label>
+                    <div class="opcoes">
+                        <div>
+                            <input type="radio" id="sim" name="sangramento" value=1 required>
+                            <label for="sim">Sim</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="não" name="sangramento" value=0 required>
+                            <label for="não">Não</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="content-btn">
+                    <button class="btn" id="consultar-btn">Consultar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <script src="/pages/js/script.js"></script>
+    <script src="/pages/js/comum.js"></script>
+</body>
+
+</html>

@@ -1,15 +1,17 @@
 import folium
 from folium.plugins import HeatMap
-from Algoritmos.kmeans import KmeansClustering
-from Algoritmos.temperaSimulada import tempera_simulada, ler_base1, ler_base2, funcao_custo
+# from kmeans import KmeansClustering
+from pages.Algoritmos.kmeans import KmeansClustering
+# from temperaSimulada import tempera_simulada, ler_base1, ler_base2, funcao_custo
+from pages.Algoritmos.temperaSimulada import tempera_simulada, ler_base1, ler_base2, funcao_custo
 import numpy as np
 from folium.features import DivIcon
-from opencage.geocoder import OpenCageGeocode  # Importação da biblioteca OpenCageGeocode
+from opencage.geocoder import OpenCageGeocode 
 
 
 def ler_dados():
-    dados_base1 = ler_base1('sintomas_dengue.csv')
-    dados_base2 = ler_base2('./dataBase/ubs.csv')
+    dados_base1 = ler_base1('pages/Algoritmos/sintomas_dengue.csv')
+    dados_base2 = ler_base2('pages/Algoritmos/ubs.csv')
     return dados_base1, dados_base2
 
 def calcular_solucao_otimizada(dados_base1, dados_base2):
@@ -21,8 +23,8 @@ def calcular_solucao_otimizada(dados_base1, dados_base2):
     return solucao_otimizada
 
 def ler_dados_dengue_e_ubs():
-    data_dengue = np.genfromtxt("sintomas_dengue.csv", delimiter=";", skip_header=1, usecols=(5, 6, 8))
-    dados_ubs = np.genfromtxt("./dataBase/ubs.csv", delimiter=";", skip_header=1, usecols=(8, 9, 10, 11))
+    data_dengue = np.genfromtxt("pages/Algoritmos/sintomas_dengue.csv", delimiter=";", skip_header=1, usecols=(5, 6, 8))
+    dados_ubs = np.genfromtxt("pages/Algoritmos/ubs.csv", delimiter=";", skip_header=1, usecols=(8, 9, 10, 11))
     return data_dengue, dados_ubs
 
 def agrupar_clusters(data, k=5, iteration=200):
@@ -59,8 +61,8 @@ def obter_endereco(lat, long, chave_api):
         return None
 
 def adicionar_marcadores_otimizados(mapa1, solucao_otimizada, chave_api):
-    enderecos_adicionados = set()  # Conjunto para armazenar endereços já adicionados
-    enderecos = []  # Vetor para armazenar os endereços
+    enderecos_adicionados = set()
+    enderecos = []
 
     for localizacao in solucao_otimizada:
         lat = localizacao['Latitude']
@@ -83,21 +85,14 @@ def criar_mapa_calor(mapa3, clusters):
 def salvar_mapa(mapa, nome_arquivo):
     mapa.save(nome_arquivo)
 
-def main():
-    # Leitura dos dados
+def general():
     dados_base1, dados_base2 = ler_dados()
-
-    # Cálculo da solução otimizada
     solucao_otimizada = calcular_solucao_otimizada(dados_base1, dados_base2)
-
-    # Leitura dos dados de sintomas de dengue e unidades de saúde
     data_dengue, dados_ubs = ler_dados_dengue_e_ubs()
 
-    # Agrupamento dos clusters
     clusters_dengue = agrupar_clusters(data_dengue)
     clusters_ubs = agrupar_clusters(dados_ubs)
 
-    # Criar o mapa
     mapa1 = folium.Map(location=[-10.9092, -37.0628], zoom_start=8, tiles="openstreetmap")
     mapa2 = folium.Map(location=[-10.9092, -37.0628], zoom_start=8, tiles="openstreetmap")
     mapa3 = folium.Map(location=[-10.9092, -37.0628], zoom_start=8, tiles="openstreetmap")
@@ -141,11 +136,10 @@ def main():
     criar_mapa_calor(mapa, clusters_dengue)
 
     # Salvar o mapa como HTML
-    salvar_mapa(mapa1, "./pages/mapas/mapa_clusters_e_otimizacao1.html")
-    salvar_mapa(mapa2, "./pages/mapas/mapa_clusters_e_otimizacao3.html")
-    salvar_mapa(mapa3, "./pages/mapas/mapa_clusters_e_otimizacao2.html")
-    salvar_mapa(mapa, "./pages/mapas/mapa.html")
+    salvar_mapa(mapa1, "./templates/mapa_clusters_e_otimizacao1.html")
+    salvar_mapa(mapa2, "./templates/mapa_clusters_e_otimizacao3.html")
+    salvar_mapa(mapa3, "./templates/mapa_clusters_e_otimizacao2.html")
+    salvar_mapa(mapa, "./templates/mapa.html")
 
 
-if __name__ == "__main__":
-    main()
+# general()

@@ -121,3 +121,371 @@ nav {
     width: 100vw;
     margin-top: 20px;
 }
+
+.btn-model {
+    background: #60605c;
+    font-size: 1.6rem;
+    /* margin-left: 3rem; */
+    color: #fff;
+    /* box-shadow: 0 0 .3px black; */
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-model:hover {
+    background: #ed9242;
+
+}
+
+.btn-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+* {
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+
+
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #34bbda;
+
+}
+
+
+section {
+    min-height: 10vh;
+    padding: 8rem 9% 2rem;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+}
+
+.logo {
+    font-family: 'Lobster', cursive;
+    color: var(--text-color);
+    font-size: 30px;
+    cursor: default;
+    /* ------------------------------------------------------------- */
+    /* border: 1px solid peru; */
+}
+
+.navbar a {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-left: 3rem;
+    transition: .2s;
+    /* ------------------------------------------------------------- */
+    /* border: 1px solid bisque; */
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    border-top: 4px solid var(--main-color);
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+
+#icon {
+    cursor: pointer;
+    width: 22px;
+    background-image: var(--text-color);
+    margin-left: 20px;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+
+#menu-icon {
+    font-size: 3.0rem;
+    color: var(--text-color);
+    display: none;
+}
+
+#botao {
+    /* cor de fundo do botão */
+    background: var(--text-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 .3px var(--text-color);
+    border-radius: 5px;
+    padding: 5px 20px;
+    border: none;
+    font-weight: 500;
+}
+
+#botao:hover {
+    background: var(--main-color);
+    box-shadow: 0 0 .7px var(--main-color);
+
+}
+
+.home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 70px;
+}
+
+
+.home-content {
+    width: 100vw;
+    margin-top: 20px;
+}
+
+.home-content h1 {
+    font-size: 5.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.home-content p {
+    font-size: 2.6rem;
+    color: black;
+    text-align: left;
+    margin: 9px 81px 0px 0px;
+}
+
+
+.home-content p:nth-of-type(1) {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.input-bx {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.input-bx input {
+    margin: 0 0;
+    box-shadow: 0 0.5rem 1rem #444242;
+    border: none;
+    display: block;
+    border-radius: 7px;
+    outline: none;
+    width: 60%;
+    padding: 1.2rem;
+    color: var(--text-color);
+    font-size: 17px;
+    background: #eee;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 10px;
+    background: #ed9242;
+    border-radius: 7px;
+    box-shadow: 0 0 .5px black;
+    font-size: 1.6rem;
+    font-weight: 500;
+    transition: .2s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #60605c;
+    box-shadow: 0 0 .5px black;
+    color: black;
+}
+
+
+.testWve .active,
+.testWve a:hover {
+    background-color: #ed9242;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 0.5rem 1rem #a59b9b;
+}
+
+
+@media only screen and (max-width: 1615px) {
+
+    .home-content h1 {
+        font-size: 4.6rem;
+
+    }
+
+
+}
+
+@media only screen and (max-width: 1360px) {
+
+    .home-content h1 {
+        font-size: 3.6rem;
+    }
+
+    .home-content p {
+        font-size: 2rem;
+
+    }
+
+    .input-bx input {
+        margin: 0 0;
+        border-radius: 7px;
+        width: 50%;
+        padding: 1rem;
+        font-size: 15px;
+    }
+
+    .home-content h1 {
+        font-size: 2.6rem;
+    }
+
+    .home-content p {
+        font-size: 2rem;
+    }
+
+}
+
+@media only screen and (max-width: 1160px) {
+
+    .home-content h1 {
+        font-size: 3rem;
+    }
+
+    .home-content p {
+        font-size: 1.8rem;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 950px) {
+
+    .input-bx input {
+
+        width: 100%;
+
+    }
+
+    .input-bx {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-content p {
+        margin: 0px;
+        text-align: justify;
+    }
+
+    .home-content h1 {
+        text-align: justify;
+        margin: 0px;
+    }
+
+
+}
+
+@media only screen and (max-width: 760px) {
+
+    .home-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .home-content p {
+        font-size: 1.5rem;
+        margin: 0px;
+    }
+
+}
+
+@media only screen and (max-width: 760px) {
+
+
+    .home-content p {
+        text-align: justify;
+        margin: 0px;
+    }
+
+}
+
+/* @media only screen and (max-width: 360px) {
+
+    .home-content h1 {
+        font-size: 2.5rem;
+    }
+
+} */
+/* 
+
+@media only screen and (max-width: 1160px) {
+
+    .home-content h1 {
+        font-size: 3rem;
+    }
+
+} */
+
+
+
+
+/* Estilo da barra de rolagem */
+::-webkit-scrollbar {
+    width: 12px;
+    /* largura da barra de rolagem */
+}
+
+/* Estilo do trilho da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* cor do trilho */
+}
+
+/* Estilo do botão da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background: #60605c;
+    /* cor do botão */
+    border-radius: 6px;
+    /* borda do botão */
+}
+
+/* Estilo do botão da barra de rolagem quando passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+    background: #60605c;
+    /* cor do botão quando passar o mouse */
+}

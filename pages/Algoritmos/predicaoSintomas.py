@@ -1,6 +1,7 @@
 import csv
 import numpy as np
-from DecisionTree import DecisionTree
+# from DecisionTree import DecisionTree
+from pages.Algoritmos.DecisionTree import DecisionTree
 
 class MinMaxScalerCustom:
     def __init__(self):
@@ -19,7 +20,7 @@ class MinMaxScalerCustom:
         return self.transform(X)
 
 class DenguePredictor:
-    def __init__(self, data_file='./dataBase/sintomas_dengue.csv', test_size=0.2, random_state=42, max_depth=10):
+    def __init__(self, data_file='sintomas_dengue.csv', test_size=0.2, random_state=42, max_depth=10):
         self.data_file = data_file
         self.test_size = test_size
         self.random_state = random_state
@@ -120,87 +121,3 @@ def dataAcess(novos_dados):
     }
 
     return resultado_post
-
-# # Exemplo 1
-# novos_dados1 = {
-#     "nome": "João",
-#     "febre": 1,
-#     "dor_cabeca": 1,
-#     "dor_articulacoes": 1,
-#     "sangramento": 0,
-#     "latitude": 37.7749,
-#     "longitude": -122.4194,
-#     "idade": 25
-# }
-# resultado_previsao1 = dataAcess(novos_dados1)
-# print(resultado_previsao1)
-
-# # Exemplo 2
-# novos_dados2 = {
-#     "nome": "Maria",
-#     "febre": 0,
-#     "dor_cabeca": 1,
-#     "dor_articulacoes": 0,
-#     "sangramento": 1,
-#     "latitude": 34.0522,
-#     "longitude": -118.2437,
-#     "idade": 40
-# }
-# resultado_previsao2 = dataAcess(novos_dados2)
-# print(resultado_previsao2)
-
-# # Exemplo 3
-# novos_dados3 = {
-#     "nome": "Pedro",
-#     "febre": 1,
-#     "dor_cabeca": 1,
-#     "dor_articulacoes": 1,
-#     "sangramento": 1,
-#     "latitude": 41.8781,
-#     "longitude": -87.6298,
-#     "idade": 35
-# }
-# resultado_previsao3 = dataAcess(novos_dados3)
-# print(resultado_previsao3)
-
-# # Exemplo 4
-# novos_dados4 = {
-#     "nome": "Ana",
-#     "febre": 0,
-#     "dor_cabeca": 0,
-#     "dor_articulacoes": 0,
-#     "sangramento": 0,
-#     "latitude": 51.5074,
-#     "longitude": -0.1278,
-#     "idade": 50
-# }
-# resultado_previsao4 = dataAcess(novos_dados4)
-# print(resultado_previsao4)
-
-# # Exemplo 5
-# novos_dados5 = {
-#     "nome": "Luiz",
-#     "febre": 1,
-#     "dor_cabeca": 0,
-#     "dor_articulacoes": 0,
-#     "sangramento": 1,
-#     "latitude": 35.6895,
-#     "longitude": 139.6917,
-#     "idade": 45
-# }
-# resultado_previsao5 = dataAcess(novos_dados5)
-# print(resultado_previsao5)
-
-# Exemplo 6
-# novos_dados6 = {
-#     "nome": "Carla",
-#     "febre": 0,
-#     "dor_cabeca": 1,
-#     "dor_articulacoes": 1,
-#     "sangramento": 0,
-#     "latitude": -33.8688,
-#     "longitude": 151.2093,
-#     "idade": 30
-# }
-# resultado_previsao6 = dataAcess(novos_dados6)
-# print(resultado_previsao6)

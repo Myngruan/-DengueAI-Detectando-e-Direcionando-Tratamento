@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="styles/componentesReuso.css"> -->
+    <link rel="stylesheet" href="./pages/styles/introduction.css">
+    <link rel="stylesheet" href="./pages/styles/componentesReuso.css">
+    <style>
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+    <title>Projeto Mosquito</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">D&D</a>
+
+        <nav class="navbar">
+            <div class="testWve">
+                <a href="/" class="active" id="limpar-link">Home</a>
+                <a href="/consulta">Consulta Online</a>
+                <a href="/painel" id="limpar-link">Painel Controle</a>
+                <a href="/hospitais" id="limpar-link">Hospitais</a>
+                <a href="/contaminacao" id="limpar-link">Contaminação</a>
+                <a href="/unidades" id="limpar-link">Novas unidades</a>
+            </div>
+        </nav>
+
+    </header>
+
+    <section class="home" id="home">
+
+        <div class="home-content">
+            <h1>Plataforma para controle e gerenciamento de risco em combate a Dengue</h1>
+
+            <p>Ao fornecer informações em tempo real sobre áreas de risco, casos confirmados e medidas preventivas, essa
+                plataforma permite uma abordagem proativa para mitigar a propagação do vírus. Por meio de mapas
+                interativos
+                e orientações, a página capacita tanto autoridades de saúde quanto a comunidade em geral a tomar medidas
+                preventivas e de combate direcionadas.
+            </p>
+            <div class="input-bx">
+                <input id="text" type="text" placeholder="Informe seu primeiro nome" autocomplete="off">
+                <a class="btn" id="criar-conta-btn" href="/consulta">Acesse a consulta</a>
+
+            </div>
+        </div>
+        <div class="home-img">
+
+            <img src="../pages/images/example.jpg" id="img-mosquito">
+            <img src="../pages/images/priobido.png" id="img-block">
+
+        </div>
+    </section>
+<a href="../../templates/index.html"></a>
+
+    <script src="../pages/js/comum.js"></script>
+    <script src="../pages/js/script_index.js"></script>
+</body>
+
+</html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/painel.css">
+    <link rel="stylesheet" href="../pages/styles/painel.css">
     <title>Mapa</title>
 
 </head>
@@ -17,14 +17,16 @@
 
         <nav class="navbar">
             <div class="testWve">
-                <a href="../index.html">Home</a>
-                <a href="index_consulta.html">Consulta Online</a>
-                <a href="index_painel.html">Painel Controle</a>
-                <a href="index_hospitais.html">Hospitais</a>
-                <a href="index_contaminacao.html">Contaminação</a>
-                <a href="index_unidades.html" class="active">Novas unidades</a>
-            </div> <!-- <a id="botao" href="../ScreenLogin/login-index.html">Login</a> -->
+                <a href="/">Home</a>
+                <a href="/consulta">Consulta Online</a>
+                <a href="/painel">Painel Controle</a>
+                <a href="/hospitais">Hospitais</a>
+                <a href="/contaminacao">Contaminação</a>
+                <a href="/unidades" class="active">Novas unidades</a>
+            </div>
         </nav>
+
+
     </header>
     <section class="painel" id="painel">
         <div class="content-divs">
@@ -65,12 +67,12 @@
                     <h2>Analisando as regiões com maior indice de contaminação</h2>
                 </div>
                 <div class="mapa_total">
-                    <iframe src="./mapas/mapa_clusters_e_otimizacao3.html" frameborder="0"></iframe>
+                    <iframe src="/mapa_unidades" frameborder="0"></iframe>
                 </div>
             </div>
         </div>
     </section>
-    <script src="./js/comum.js"></script>
+    <script src="../pages/js/comum.js"></script>
 </body>
 
 </html>

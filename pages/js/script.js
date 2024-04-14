@@ -59,14 +59,12 @@ function gerarJSON() {
                     jsonData: JSON.stringify(data)
                 };
                 localStorage.setItem('consultaData', formattedData.jsonData);
-
-
+                mostrarDadosNaTela(); // Chamar a função para mostrar os dados na tela
             })
             .catch(error => {
                 console.error('Erro ao enviar dados:', error);
                 // Trate o erro conforme necessário
             });
-
 
         // Limpar os campos após o envio bem-sucedido
         document.getElementById("firstname").value = "";
@@ -100,13 +98,11 @@ function gerarJSON() {
     }
 }
 
-// Escute o evento de submissão do formulário
 document.getElementById("consulta-form").addEventListener("submit", function (event) {
-    event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
-
-    // Chame a função gerarJSON para preparar e enviar os dados
+    event.preventDefault();
     gerarJSON();
 });
+
 // Função para recuperar os dados do armazenamento local e exibir na tela
 function mostrarDadosNaTela() {
     // Recuperar os dados do localStorage
@@ -119,28 +115,31 @@ function mostrarDadosNaTela() {
 
         // Verificar o valor de exame e adicionar mensagem correspondente
         let mensagem = '';
-        if (parsedData.resultado_previsao.exame === 0) {
-            mensagem = "Você pode consultar um profissional de plantão para te orientar e examinar.";
-        } else if (parsedData.resultado_previsao.exame === 1) {
+        if (parsedData.resultado_previsao && parsedData.resultado_previsao.exame === 0) {
+            mensagem = "Você pode consultar um profissional de plantão para te orientar e examinar. <br> acesse o link a seguir";
+        } else if (parsedData.resultado_previsao && parsedData.resultado_previsao.exame === 1) {
             mensagem = "Você precisa ir ao hospital mais próximo.";
         }
 
-        // Formatar os dados em HTML
         const htmlContent = `
             <p>Nome: ${parsedData.resultado_previsao.nome}</p>
             <p>Exame: ${parsedData.resultado_previsao.exame}</p>
             <p>${mensagem}</p>
+            <a href="https://meet.google.com/som-yrfs-nvb" target="_blank" class="custom-link">
+    <span class="link-text">Acessar</span>
+    <span class="link-icon">🔗</span>
+</a>
+
+
+
         `;
 
-        // Inserir o HTML na div com id "resultado"
         document.getElementById('resultado').innerHTML = htmlContent;
 
-        // Tornar a div visível
         document.getElementById('resultado').style.display = 'block';
     } else {
         console.log('Nenhum dado de consulta encontrado no armazenamento local.');
     }
 }
 
-// Chamar a função para mostrar os dados na tela quando a página for carregada
 document.addEventListener('DOMContentLoaded', mostrarDadosNaTela);

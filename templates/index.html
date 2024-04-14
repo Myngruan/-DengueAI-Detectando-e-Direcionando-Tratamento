@@ -10,6 +10,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link rel="stylesheet" href="styles/componentesReuso.css"> -->
     <link rel="stylesheet" href="./pages/styles/introduction.css">
+    <link rel="stylesheet" href="./pages/styles/componentesReuso.css">
     <style>
         canvas {
             display: block;
@@ -29,14 +30,15 @@
 
         <nav class="navbar">
             <div class="testWve">
-                <a href="index.html" class="active">Home</a>
-                <a href="./pages/index_consulta.html">Consulta Online</a>
-                <a href="./pages/index_painel.html">Painel Controle</a>
-                <a href="./pages/index_hospitais.html">Hospitais</a>
-                <a href="./pages/index_contaminacao.html">Contaminação</a>
-                <a href="./pages/index_unidades.html">Novas unidades</a>
+                <a href="/" class="active" id="limpar-link">Home</a>
+                <a href="/consulta">Consulta Online</a>
+                <a href="/painel" id="limpar-link">Painel Controle</a>
+                <a href="/hospitais" id="limpar-link">Hospitais</a>
+                <a href="/contaminacao" id="limpar-link">Contaminação</a>
+                <a href="/unidades" id="limpar-link">Novas unidades</a>
             </div>
         </nav>
+
     </header>
 
     <section class="home" id="home">
@@ -51,17 +53,19 @@
                 preventivas e de combate direcionadas.
             </p>
             <div class="input-bx">
-                <input id="text" type="text" placeholder="Endereço de email" autocomplete="off">
-                <a class="btn" id="criar-conta-btn" href="index_consulta.html">Acesse a consulta</a>
+                <input id="text" type="text" placeholder="Informe seu primeiro nome" autocomplete="off">
+                <a class="btn" id="criar-conta-btn" href="/consulta">Acesse a consulta</a>
+
             </div>
         </div>
         <div class="home-img">
 
-            <img src="img/mosquito2.png">
+            <img src="../pages/images/example.jpg" id="img-mosquito">
+            <img src="../pages/images/priobido.png" id="img-block">
 
         </div>
     </section>
-    <canvas id="canvas" style="position: absolute; top: calc(88% + 20px);"></canvas>
+    <canvas id="canvas"></canvas>
     <script>
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
@@ -97,7 +101,8 @@
         draw(); 
     </script>
 
-    <script src="./pages/js/comum.js"></script>
+    <script src="../pages/js/comum.js"></script>
+    <script src="../pages/js/script_index.js"></script>
 </body>
 
 </html>

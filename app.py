@@ -1,13 +1,77 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template, send_file, send_from_directory
 from flask_cors import CORS
 from opencage.geocoder import OpenCageGeocode
-from predicaoSintomas import dataAcess
+from pages.Algoritmos.Otimization_Clustering import general
+from pages.Algoritmos.predicaoSintomas import dataAcess
+import os
 
 app = Flask(__name__)
 CORS(app)
 
 key = 'c098a7b3be6c4b4f9f14160c422559d5'
 geocoder = OpenCageGeocode(key)
+
+root_dir = os.path.dirname(os.path.abspath(__file__))
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/pages/<path:filename>')
+def serve_static_pages(filename):
+    return send_from_directory(os.path.join(app.root_path, 'pages'), filename)
+
+
+@app.route('/pages/js/<path:filename>')
+def serve_static_js(filename):
+    return send_from_directory(os.path.join(app.root_path, 'pages', 'js'), filename)
+
+
+@app.route('/pages/styles/<path:filename>')
+def serve_static_css(filename):
+    return send_from_directory(os.path.join(app.root_path, 'pages', 'styles'), filename)
+
+@app.route('/pages/images/<path:filename>')
+def serve_static_images(filename):
+    return send_from_directory(os.path.join(app.root_path, 'pages', 'images'), filename)
+
+
+@app.route('/consulta')
+def consulta():
+    return render_template('index_consulta.html')
+
+@app.route('/painel')
+def painel():
+    return render_template('index_painel.html')
+
+@app.route('/hospitais')
+def hospitais():
+    return render_template('index_hospitais.html')
+
+@app.route('/contaminacao')
+def contaminacao():
+    return render_template('index_contaminacao.html')
+
+@app.route('/unidades')
+def unidades():
+    return render_template('index_unidades.html')
+
+@app.route('/mapa')
+def mapa():
+    return render_template('mapa.html')
+
+@app.route('/mapa_hospitais')
+def mapa_hospitais():
+    return render_template('mapa_clusters_e_otimizacao1.html')
+
+@app.route('/mapa_contaminacao')
+def mapa_contaminacao():
+    return render_template('mapa_clusters_e_otimizacao2.html')
+
+@app.route('/mapa_unidades')
+def mapa_unidades():
+    return render_template('mapa_clusters_e_otimizacao3.html')
+
 
 @app.route('/receber_data', methods=['POST'])
 def receber_dados():
@@ -53,10 +117,15 @@ def receber_dados():
     except Exception as e:
         print(f"Erro ao processar solicitação: {e}")
         return jsonify({"error": "Erro interno do servidor"}), 500
+    
+
+
+
+@app.route('/rodar_modelo', methods=['POST'])
+def rodar_modelo():
+    print("Modelo rodado com sucesso!")
+    general()
+    return jsonify({"message": "OK"}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-
